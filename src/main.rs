@@ -1,8 +1,8 @@
-pub mod provider;
-use provider::rayso::ray;
+pub mod ui;
 
 fn main() {
-    println!("Hello, world!");
-
-    ray();
+    if let Err(err) = ui::rayso::ray() {
+        eprintln!("Error: {}", err);
+        std::process::exit(1);
+    }
 }
