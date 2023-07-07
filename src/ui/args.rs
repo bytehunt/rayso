@@ -1,7 +1,12 @@
 use clap::Parser;
 
 #[derive(Parser)]
-#[command(author, version, about, long_about = "✨Upload code to ray.so from terminal")]
+#[command(
+    author,
+    version,
+    about,
+    long_about = "✨Upload code to ray.so from terminal"
+)]
 pub struct Cli {
     #[arg(short, long)]
     /// specify the filename to upload
@@ -28,7 +33,6 @@ pub struct Cli {
     pub padding: i32,
 
     #[arg(short, long, default_value = "false")]
-    /// specify if dark mode should be toggled 
+    /// specify if dark mode should be toggled
     pub darkmode: bool,
 }
-
