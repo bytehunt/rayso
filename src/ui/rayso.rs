@@ -6,9 +6,9 @@ use crate::ui::args::Cli;
 
 pub fn generate_url(
     theme: &str,
-    background: &bool,
-    padding: &i32,
-    darkmode: &bool,
+    background: bool,
+    padding: i32,
+    darkmode: bool,
     base64_encoded: &str,
     filename: &str,
 ) -> String {
@@ -29,9 +29,9 @@ pub fn ray() -> Result<(), Box<dyn std::error::Error>> {
 
     let joined_url = generate_url(
         &cli.theme,
-        &cli.background,
-        &cli.padding,
-        &cli.darkmode,
+        cli.background,
+        cli.padding,
+        cli.darkmode,
         &base64_encoded,
         filename,
     );
@@ -41,6 +41,4 @@ pub fn ray() -> Result<(), Box<dyn std::error::Error>> {
 
     Ok(())
 }
-
-
 
