@@ -15,11 +15,8 @@ categories = ["accessibility", "web-programming", "command-line" ]
 
 [dependencies]
 clap = { version = "4.3.11", features = ["derive"] }
-cli-clipboard = "0.4.0"
 open = "5.0.0"
 rbase64 = "2.0.3"
-reqwest = "0.11.18"
-tokio = "1.29.1"
 
 [profile.dev]
 opt-level = 0
