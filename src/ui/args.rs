@@ -12,7 +12,7 @@ pub struct Cli {
     /// specify the filename to upload
     pub filename: String,
 
-    #[arg(short, long, default_value = "brave")]
+    #[arg(short, long, default_value = "xdg-open")]
     /// specify the browser to open the URL
     pub open: String,
 
