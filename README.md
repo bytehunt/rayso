@@ -41,7 +41,7 @@ $ rayso --help
 ```
 for information.
 
-Browser is default set to `brave` which can be replaced with `-b` option. The below is a small demo :P 
+Browser is set to `xdg-open` which will open in default browser & yes, can be replaced with `-b` option. The below is a small demo :P 
 ### 
 <a href="https://youtu.be/TeyzQb8gUQs" target="_blank"><img src="https://github.com/pwnwriter/rayso/blob/images/884145.png" alt="img"  align="center"/></a>
 
