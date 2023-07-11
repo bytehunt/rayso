@@ -1,7 +1,7 @@
 <div align="center">
-  <h1><code>Rayso✨</code></h1> 
-
-<p><strong><em>Generate beautiful screenshot snippets from terminal using ray.so</em></strong></p>
+    <img src="https://github.com/pwnwriter/rayso/blob/images/OoO.png" height="150" width="150" style="border-radius: 50%;">
+  <h1><code>Rayso✨</code></h1>
+<p><strong><em>[ Generate beautiful screenshot snippets from terminal using <a href="https://ray.so">ray.so</a> ]</em></strong></p>
 </div>
 
 
@@ -45,5 +45,9 @@ Browser is set to `xdg-open` which will open in default browser & yes, can be re
 ### 
 <a href="https://youtu.be/TeyzQb8gUQs" target="_blank"><img src="https://github.com/pwnwriter/rayso/blob/images/884145.png" alt="img"  align="center"/></a>
 
+  
+<p align="center"><img src="https://raw.githubusercontent.com/catppuccin/catppuccin/main/assets/footers/gray0_ctp_on_line.svg?sanitize=true" /></p>
+<p align="center">Copyright &copy; 2023<a href="https://pwnwriter.xyz" target="_blank"> pwnwriter xyz ☘️ </a> 
+  
 
 
