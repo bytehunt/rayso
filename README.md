@@ -1,7 +1,7 @@
 <div align="center">
-  <h1><code>Rayso✨</code></h1> 
-
-<p><strong><em>Generate beautiful screenshot snippets from terminal using ray.so</em></strong></p>
+    <img src="https://github.com/pwnwriter/rayso/blob/images/OoO.png" height="150" width="150" style="border-radius: 50%;">
+  <h1><code>Rayso✨</code></h1>
+<p><strong><em>[ Generate beautiful screenshot snippets from terminal using <a href="https://ray.so">ray.so</a> ]</em></strong></p>
 </div>
 
 
