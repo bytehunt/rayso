@@ -13,10 +13,10 @@ pub fn generate_url(
     base64_encoded: &str,
     filename: &str,
 ) -> String {
-    let ray_url = "https://ray.so/#code=";
+    const RAY_URL: &str = "https://ray.so/#code=";
     format!(
         "{}{}&darkMode={}&theme={}&title={}&background={}&padding={}",
-        ray_url, base64_encoded, darkmode, theme, filename, background, padding
+        RAY_URL, base64_encoded, darkmode, theme, filename, background, padding
     )
 }
 
