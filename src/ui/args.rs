@@ -12,9 +12,9 @@ pub struct Cli {
     /// specify the filename to upload
     pub filename: String,
 
-    #[arg(short, long, default_value = "xdg-open")]
-    /// specify the browser to open the URL
-    pub open: String,
+    #[arg(short, long, default_value = "false")]
+    /// Specify whether to open in the default browser or not.
+    pub open: bool,
 
     #[arg(short, long, default_value = "candy")]
     /// specify the theme of the image

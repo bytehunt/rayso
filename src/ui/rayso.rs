@@ -23,7 +23,6 @@ pub fn generate_url(
 pub fn ray() -> Result<(), Box<dyn std::error::Error>> {
     let cli = Cli::parse();
     let filename = &cli.filename;
-    let browser = &cli.open;
 
     let file_contents = fs::read(filename)?;
     let base64_encoded = rbase64::encode(&file_contents);
@@ -52,7 +51,13 @@ pub fn ray() -> Result<(), Box<dyn std::error::Error>> {
         }
     }
 
-    open::with(&joined_url, browser)?;
+    // println!("{}", cli.open);
+    
+    // check if open argument is true, if true open else don't
+    if cli.open {
+        open::that(&joined_url)?;
+    }
+
     //println!("{}", joined_url_str);
 
     Ok(())
