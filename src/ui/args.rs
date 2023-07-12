@@ -30,7 +30,7 @@ pub struct Cli {
     /// specify the padding of the image
     ///
     /// Available options: 16, 32, 64, 128
-    pub padding: i32,
+    pub padding: usize,
 
     #[arg(short, long, default_value = "false")]
     /// specify if dark mode should be toggled
