@@ -35,13 +35,13 @@ $ paru/yay -S rayso
 
 
 ## Usages 🎠
-  - Everything is under help menu use
-```bash
-$ rayso --help 
-```
-for information.
+  - Everything is under help menu.
 
-Browser is set to `xdg-open` which will open in default browser & yes, can be replaced with `-b` option. The below is a small demo :P 
+Use `rayso --help` for more information.
+
+By default, it only copies the `url` to the clipboard. The `-o` or `--open` option will open it in the default browser, i.e `xdg-open`
+
+ . The below is a small demo :P 
 ### 
 <a href="https://youtu.be/TeyzQb8gUQs" target="_blank"><img src="https://github.com/pwnwriter/rayso/blob/images/884145.png" alt="img"  align="center"/></a>
 
