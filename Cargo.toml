@@ -1,6 +1,6 @@
 [package]
 name = "rayso"
-version = "0.1.0"
+version = "0.1.1"
 edition = "2021"
 authors = [ "PwnWriter < hey@pwnwriter.xyz >" ]
 description = "Upload code to ray.so from terminal"

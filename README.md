@@ -4,8 +4,11 @@
 <p><strong><em>[ Generate beautiful screenshot snippets from terminal using <a href="https://ray.so">ray.so</a> ]</em></strong></p>
 </div>
 
+## Requirements 🙄
+  - xclip
 
 ## Installation 🍀
+    
 
 - Source 🍙
 
@@ -40,8 +43,8 @@ $ paru/yay -S rayso
 Use `rayso --help` for more information.
 
 By default, it only copies the `url` to the clipboard. The `-o` or `--open` option will open it in the default browser, i.e `xdg-open`
+The below is a small demo :P 
 
- . The below is a small demo :P 
 ### 
 <a href="https://youtu.be/TeyzQb8gUQs" target="_blank"><img src="https://github.com/pwnwriter/rayso/blob/images/884145.png" alt="img"  align="center"/></a>
 
