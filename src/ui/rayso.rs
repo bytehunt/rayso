@@ -21,11 +21,9 @@ pub fn generate_url(
 }
 
 pub fn ray() -> Result<(), Box<dyn std::error::Error>> {
-    let cli = Cli::parse();  // Parse command-line arguments
-    let filename = &cli.filename;
-
-    let file_contents = fs::read(filename)?;  // Read file contents
-    let base64_encoded = rbase64::encode(&file_contents);  // Encode file contents to base64
+    let cli = Cli::parse(); // Parse command-line arguments
+    let file_contents = fs::read(&cli.filename)?; // Read file contents
+    let base64_encoded = rbase64::encode(&file_contents); // Encode file contents to base64
 
     let joined_url = generate_url(
         &cli.theme,
@@ -33,25 +31,28 @@ pub fn ray() -> Result<(), Box<dyn std::error::Error>> {
         cli.padding,
         cli.darkmode,
         &base64_encoded,
-        filename,
-    );  // Generate URL using provided parameters
+        &cli.filename,
+    ); // Generate URL using provided parameters
 
-    let mut child = Command::new("xclip")  // Spawn xclip process
-        .arg("-selection")
-        .arg("clipboard")
+    let mut child = Command::new("xclip") // Spawn xclip process
+        .arg("-sel")
+        .arg("c")
         .stdin(Stdio::piped())
-        .spawn()?;  // Handle potential errors
+        .spawn()?; // Handle potential errors
 
-    if let Some(stdin) = &mut child.stdin {
-        stdin.write_all(joined_url.as_bytes())?;  // Write URL to xclip process stdin
-    } else {
-        return Err("Failed to get stdin for xclip process".into());
+    match child.stdin {
+        Some(ref mut stdin) => {
+            stdin.write_all(joined_url.as_bytes())?; // Write URL to xclip process stdin
+        }
+        None => {
+            return Err("Failed to get stdin for xclip process".into());
+        }
     }
 
     if cli.open {
-        open::that(&joined_url)?;  // Open URL in default browser
+        open::that(&joined_url)?; // Open URL in default browser
     }
 
-    Ok(())  // Return success
+    Ok(()) // Return success
 }
 
