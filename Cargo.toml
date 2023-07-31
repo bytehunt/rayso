@@ -15,6 +15,7 @@ categories = ["accessibility", "web-programming", "command-line" ]
 
 [dependencies]
 clap = { version = "4.3.11", features = ["derive"] }
+tokio = { version = "1.29.1", features = ["full"] }  
 open = "5.0.0"
 rbase64 = "2.0.3"
 

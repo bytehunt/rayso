@@ -1,9 +1,12 @@
 use crate::ui::args::Cli;
 use clap::Parser;
 use rbase64;
-use std::fs;
-use std::io::Write;
-use std::process::{Command, Stdio};
+use std::process::Stdio;
+use tokio::fs as async_fs;
+use tokio::io::AsyncWriteExt;
+use tokio::process::Command as AsyncCommand;
+
+const RAY_URL: &str = "https://ray.so/#code=";
 
 pub fn generate_url(
     theme: &str,
@@ -13,16 +16,15 @@ pub fn generate_url(
     base64_encoded: &str,
     filename: &str,
 ) -> String {
-    const RAY_URL: &str = "https://ray.so/#code=";
     format!(
         "{}{}&darkMode={}&theme={}&title={}&background={}&padding={}",
         RAY_URL, base64_encoded, darkmode, theme, filename, background, padding
     )
 }
 
-pub fn ray() -> Result<(), Box<dyn std::error::Error>> {
+pub async fn ray() -> Result<(), Box<dyn std::error::Error>> {
     let cli = Cli::parse(); // Parse command-line arguments
-    let file_contents = fs::read(&cli.filename)?; // Read file contents
+    let file_contents = async_fs::read(&cli.filename).await?; // Read file contents asynchronously
     let base64_encoded = rbase64::encode(&file_contents); // Encode file contents to base64
 
     let joined_url = generate_url(
@@ -34,7 +36,7 @@ pub fn ray() -> Result<(), Box<dyn std::error::Error>> {
         &cli.filename,
     ); // Generate URL using provided parameters
 
-    let mut child = Command::new("xclip") // Spawn xclip process
+    let mut child = AsyncCommand::new("xclip") // Spawn xclip process asynchronously
         .arg("-sel")
         .arg("c")
         .stdin(Stdio::piped())
@@ -42,7 +44,7 @@ pub fn ray() -> Result<(), Box<dyn std::error::Error>> {
 
     match child.stdin {
         Some(ref mut stdin) => {
-            stdin.write_all(joined_url.as_bytes())?; // Write URL to xclip process stdin
+            stdin.write_all(joined_url.as_bytes()).await?; // Write URL to xclip process stdin asynchronously
         }
         None => {
             return Err("Failed to get stdin for xclip process".into());
@@ -55,4 +57,3 @@ pub fn ray() -> Result<(), Box<dyn std::error::Error>> {
 
     Ok(()) // Return success
 }
-
