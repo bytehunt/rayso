@@ -4,8 +4,8 @@
 <p><strong><em>[ Generate beautiful screenshot snippets from terminal using <a href="https://ray.so">ray.so</a> ]</em></strong></p>
 </div>
 
-## Requirements 🙄
-  - xclip
+## Requirements ☀️ 
+  - A [`clipboard`](https://wiki.archlinux.org/title/clipboard)
 
 ## Installation 🍀
     
@@ -24,7 +24,7 @@ $ cargo build --release # move rayso binary to your any $PATH 🥦
 $ cargo install rayso
  ```
 
-- [METIS Linux](https://metislinux.org)
+- [`METIS Linux`](https://metislinux.org)(**based**)
 
 ```bash
 $ sudo/doas pacman -S rayso
