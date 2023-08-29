@@ -1,6 +1,6 @@
 use clap::{Parser, ValueEnum};
 
-const ABOUT: &str = "Rayo: create beautiful code snippets on ray.so";
+const ABOUT: &str = "⋆˚✿˖° Rayo: create beautiful code snippets on ray.so";
 
 #[derive(Parser)]
 #[command(
@@ -8,6 +8,7 @@ const ABOUT: &str = "Rayo: create beautiful code snippets on ray.so";
     version,
     about = ABOUT,
 )]
+#[command(arg_required_else_help = true)]
 pub struct Cli {
     #[arg(short, long)]
     /// specify the filename to upload
