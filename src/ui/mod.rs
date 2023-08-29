@@ -1,5 +1,6 @@
 pub mod args;
 pub mod rayso;
+pub mod clip;
 pub mod url_generator;
 
 pub use args::Cli;

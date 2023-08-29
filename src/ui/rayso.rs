@@ -1,10 +1,19 @@
 use crate::ui::args::{Cli, Padding, Theme};
 use clap::Parser;
 use rbase64;
-use std::process::Stdio;
 use tokio::fs as async_fs;
-use tokio::io::AsyncWriteExt;
-use tokio::process::Command as AsyncCommand;
+
+pub async fn clipboard(url: &[u8]) -> Result<(), Box<dyn std::error::Error>> {
+    if let Ok(session_type) = std::env::var("XDG_SESSION_TYPE") {
+        match session_type.as_str() {
+            "x11" => crate::ui::clip::x11_clip(url).await,
+            "wayland" => crate::ui::clip::wayland_clip(url).await,
+            _ => Err("Unsupported session type".into()),
+        }
+    } else {
+        Err("XDG_SESSION_TYPE environment variable not set".into())
+    }
+}
 
 pub async fn ray() -> Result<(), Box<dyn std::error::Error>> {
     let cli = Cli::parse();
@@ -38,15 +47,7 @@ pub async fn ray() -> Result<(), Box<dyn std::error::Error>> {
         &cli.filename,
     );
 
-    let mut child = AsyncCommand::new("wl-copy") // Spawn xclip process asynchronously
-        .stdin(Stdio::piped())
-        .spawn()?; // Handle potential errors
-
-    if let Some(ref mut stdin) = child.stdin {
-        stdin.write_all(joined_url.as_bytes()).await?; // Write URL to xclip process stdin asynchronously
-    } else {
-        return Err("Failed to get stdin for xclip process".into());
-    }
+    let _ = clipboard(joined_url.as_bytes()).await;
 
     if cli.open {
         open::that(&joined_url)?; // Open URL in default browser
